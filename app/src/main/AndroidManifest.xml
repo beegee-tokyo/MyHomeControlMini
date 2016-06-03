@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="tk.giesecke.myhomecontrol"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+	<application
+		android:allowBackup="false"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:supportsRtl="true"
+		tools:ignore="GoogleAppIndexingWarning">
+
+		<activity
+			android:name=".MyHomeControl"
+			android:label="@string/app_name"
+			android:launchMode="singleTask">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+
+		<activity
+			android:name=".Utilities"
+			android:label="@string/app_name"
+			android:launchMode="singleTask">
+		</activity>
+
+		<receiver
+			android:name=".AutoStart"
+			android:enabled="true"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED"/>
+			</intent-filter>
+		</receiver>
+
+		<service
+			android:name=".UDPlistener"
+			android:enabled="true">
+		</service>
+
+		<receiver
+			android:name=".EventReceiver"
+			android:enabled="true">
+		</receiver>
+
+		<receiver android:name=".SecurityWidget">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+				<action android:name="android.appwidget.action.APPWIDGET_DELETED"/>
+				<action android:name="android.appwidget.action.APPWIDGET_ENABLED"/>
+				<action android:name="android.appwidget.action.APPWIDGET_DISABLED"/>
+			</intent-filter>
+
+			<meta-data
+				android:name="android.appwidget.provider"
+				android:resource="@xml/security_widget_info"/>
+		</receiver>
+
+		<service
+			android:name=".SecurityWidgetClick"
+			android:exported="false">
+		</service>
+
+		<service
+			android:name=".StartBackgroundServices"
+			android:exported="false">
+		</service>
+
+		<service
+			android:name=".SolarUpdateService"
+			android:exported="false">
+		</service>
+
+		<receiver android:name=".SPwidget">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+			</intent-filter>
+
+			<meta-data
+				android:name="android.appwidget.provider"
+				android:resource="@xml/spwidget_info"/>
+		</receiver>
+
+		<activity android:name=".SPwidgetConfigureActivity">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+			</intent-filter>
+		</activity>
+
+	</application>
+
+</manifest>

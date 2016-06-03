@@ -1,0 +1,161 @@
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:paddingBottom="@dimen/activity_vertical_margin"
+	android:paddingLeft="@dimen/activity_horizontal_margin"
+	android:paddingRight="@dimen/activity_horizontal_margin"
+	android:paddingTop="@dimen/activity_vertical_margin"
+	tools:context="tk.giesecke.myhomecontrol.MyHomeControl"
+	tools:showIn="@layout/activity_my_home_control"
+	android:id="@+id/view_solar"
+	android:visibility="visible"
+	tools:ignore="ButtonStyle,Overdraw"
+	android:background="@android:color/black">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:text="@string/tv_sens1_curr_txt"
+		android:id="@+id/tv_solar_txt"
+		android:textColor="@android:color/white"
+		android:layout_centerHorizontal="true"
+		android:layout_below="@+id/tv_result_val"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:text="@string/tv_sens_value_txt"
+		android:id="@+id/tv_solar_val"
+		android:textColor="@android:color/holo_orange_light"
+		android:layout_below="@+id/tv_solar_txt"
+		android:textSize="35sp"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="10dp"
+		android:layout_marginBottom="10dp"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:text="@string/tv_sens2_curr_txt"
+		android:id="@+id/tv_cons_txt"
+		android:textColor="@android:color/white"
+		android:layout_centerHorizontal="true"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:text="@string/tv_sens_value_txt"
+		android:id="@+id/tv_cons_val"
+		android:layout_below="@+id/tv_cons_txt"
+		android:textColor="@android:color/holo_blue_light"
+		android:textSize="35sp"
+		android:layout_marginTop="10dp"
+		android:layout_marginBottom="10dp"
+		android:layout_centerHorizontal="true"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:text="@string/tv_result_txt_ex"
+		android:id="@+id/tv_result_txt"
+		android:textColor="@android:color/white"
+		android:layout_centerHorizontal="true"
+		android:gravity="center_horizontal"
+		android:background="@android:color/transparent"
+		android:layout_below="@+id/tv_cons_val"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:text="@string/tv_sens_value_txt"
+		android:id="@+id/tv_result_val"
+		android:textColor="@android:color/holo_green_light"
+		android:gravity="center_horizontal"
+		android:textSize="35sp"
+		android:background="@android:color/transparent"
+		android:layout_below="@+id/tv_result_txt"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="10dp"
+		android:layout_marginBottom="10dp"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:text="@string/tv_result"
+		android:id="@+id/tv_solar_max"
+		android:textColor="@android:color/holo_orange_light"
+		android:background="@android:color/transparent"
+		android:gravity="center_horizontal"
+		android:visibility="invisible"
+		android:layout_alignParentRight="true"
+		android:layout_alignBaseline="@+id/tv_solar_val"
+		android:layout_alignParentEnd="true"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:text="@string/tv_result"
+		android:id="@+id/tv_cons_max"
+		android:textColor="@android:color/holo_blue_light"
+		android:background="@android:color/transparent"
+		android:gravity="center_horizontal"
+		android:visibility="invisible"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignBaseline="@+id/tv_cons_val"/>
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/ll_buttons"
+		android:layout_below="@+id/tv_solar_val">
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/ib_aircon"
+			android:contentDescription="@string/SOLAR_URL"
+			android:src="@drawable/ic_aircon"
+			android:layout_weight="1"
+			android:clickable="true"
+			android:onClick="onClick"/>
+
+		<ImageButton
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/ib_security"
+			android:contentDescription="@string/AIRCON_URL_1"
+			android:src="@drawable/ic_security"
+			android:layout_weight="1"
+			android:clickable="true"
+			android:onClick="onClick"/>
+
+	</LinearLayout>
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/sv_result"
+		android:layout_below="@+id/ll_buttons"
+		android:layout_alignParentBottom="true">
+
+		<TextView
+			android:id="@+id/solar_status"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textColor="@android:color/white"/>
+
+	</ScrollView>
+
+</RelativeLayout>
